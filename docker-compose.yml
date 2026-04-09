@@ -20,6 +20,9 @@ services:
       POSTGRES_PASSWORD: admin
     networks:
       - auth-net
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
 
   adminer:
     image: adminer:latest
@@ -31,3 +34,6 @@ services:
 networks:
   auth-net:
     driver: bridge
+
+volumes:
+  postgres_data:
