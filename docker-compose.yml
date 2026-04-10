@@ -9,6 +9,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=admin
     networks:
       - auth-net
+      - shared-network
     depends_on:
       - db
 
@@ -34,6 +35,8 @@ services:
 networks:
   auth-net:
     driver: bridge
+  shared-network:
+    external: true
 
 volumes:
   postgres_data:
