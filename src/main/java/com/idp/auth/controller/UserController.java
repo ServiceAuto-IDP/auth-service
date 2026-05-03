@@ -27,7 +27,7 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
         try {
             String token = userService.login(userDTO);
-            return ResponseEntity.ok().body("User successfully logged in: " + token);
+            return ResponseEntity.ok().body(token);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
