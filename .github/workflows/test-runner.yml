@@ -1,0 +1,27 @@
+name: Test Self Hosted Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: [self-hosted, Windows, serviceauto]
+
+    steps:
+      - name: Show machine info
+        shell: powershell
+        run: |
+          hostname
+          whoami
+          pwd
+
+      - name: Test Docker
+        shell: powershell
+        run: |
+          docker version
+          docker ps
+
+      - name: Test Portainer access
+        shell: powershell
+        run: |
+          Invoke-WebRequest -Method GET -Uri "http://localhost:9000" -UseBasicParsing
